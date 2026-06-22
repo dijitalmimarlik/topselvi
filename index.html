@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proje Yönetim Paneli | Bozoğlu Architects</title>
+    <title>Proje Dosya Paneli | Bozoğlu Architects</title>
     <style>
-        /* --- Kurumsal Mimari Tema ve Reset --- */
+        /* --- Kurumsal Mimari Tema --- */
         * {
             margin: 0;
             padding: 0;
@@ -19,7 +19,6 @@
             line-height: 1.6;
         }
 
-        /* --- Bozoğlu Architects Stilinde Menü ve Header --- */
         header {
             background-color: #ffffff;
             border-bottom: 1px solid #e5e5e5;
@@ -63,7 +62,6 @@
             letter-spacing: 1.5px;
             color: #555555;
             text-decoration: none;
-            transition: color 0.3s ease;
             font-weight: 500;
         }
 
@@ -71,14 +69,12 @@
             color: #000000;
         }
 
-        /* --- İçerik Alanı --- */
         main {
             max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        /* Proje Bilgileri */
         .project-section {
             background-color: #ffffff;
             padding: 30px;
@@ -103,12 +99,10 @@
             max-width: 800px;
         }
 
-        /* Dosya Tablosu */
         .table-container {
             background-color: #ffffff;
             border: 1px solid #e5e5e5;
             padding: 20px;
-            overflow-x: auto;
         }
 
         .table-header-flex {
@@ -148,7 +142,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Sıralama Yapılabilen Sütun Başlığı */
         th.sortable {
             cursor: pointer;
             user-select: none;
@@ -159,57 +152,20 @@
             background-color: #f0f0f0;
         }
 
-        th.sortable::after {
-            content: ' ↕';
-            font-size: 10px;
-            color: #aaa;
-        }
-
         tr:hover td {
             background-color: #fcfcfc;
         }
 
-        /* Form Elemanları Tasarımı */
         .file-link {
             color: #000000;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s;
+            display: inline-block;
         }
 
         .file-link:hover {
             color: #666666;
             text-decoration: underline;
-        }
-
-        input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-            accent-color: #000000;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 6px 10px;
-            border: 1px solid #dddddd;
-            border-radius: 3px;
-            font-size: 13px;
-            transition: border-color 0.2s;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #000000;
-        }
-
-        .status-badge {
-            font-size: 11px;
-            padding: 2px 6px;
-            background: #eee;
-            color: #555;
-            border-radius: 3px;
-            margin-left: 5px;
         }
     </style>
 </head>
@@ -222,7 +178,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#" class="active">Proje Paneli</a></li>
+                    <li><a href="#" class="active">Proje Klasörü</a></li>
                     <li><a href="https://bozogluarchitects.com" target="_blank">Kurumsal Site</a></li>
                 </ul>
             </nav>
@@ -230,171 +186,100 @@
     </header>
 
     <main>
-        
         <section class="project-section">
             <h2 class="project-title">Aktaş Apartmanı Çatı Yenileme Projesi</h2>
             <p class="project-description">
-                Bu panel üzerinde, projeye ait güncel çizimler, detay paftaları, ruhsat dokümanları ve hakediş dosyaları otomatik olarak listelenmektedir. İlgili dosyaların müellif ve yapı denetim onay durumlarını aşağıdaki tablodan takip edebilir, güncel açıklamaları inceleyebilirsiniz.
+                Aşağıdaki tabloda, bu projeye ait güncel çizimler, teknik şartnameler ve dökümanlar listelenmektedir. Depoya yeni bir dosya eklendiğinde bu liste otomatik olarak güncellenir.
             </p>
         </section>
 
         <section class="table-container">
             <div class="table-header-flex">
-                <h3>Proje Dökümantasyon Listesi</h3>
+                <h3>Dosya Listesi</h3>
                 <span id="file-count" style="font-size: 12px; color: #777;">Yükleniyor...</span>
             </div>
             
             <table>
                 <thead>
                     <tr>
-                        <th style="width: 60px;">Sıra No</th>
-                        <th class="sortable" id="sort-file-name" style="width: 40%;">Dosya Adı</th>
-                        <th style="width: 15%; text-align: center;">Müellif İmzalı</th>
-                        <th style="width: 15%; text-align: center;">Yapı Denetim İmzalı</th>
-                        <th>Açıklama</th>
+                        <th style="width: 80px;">Sıra No</th>
+                        <th class="sortable" id="sort-file-name">Dosya Adı <span id="sort-icon">↕</span></th>
                     </tr>
                 </thead>
                 <tbody id="file-table-body">
                     <tr>
-                        <td colspan="5" style="text-align: center; color: #888; padding: 30px;">
-                            Dosya listesi senkronize ediliyor...
+                        <td colspan="2" style="text-align: center; color: #888; padding: 30px;">
+                            Yükleniyor...
                         </td>
                     </tr>
                 </tbody>
             </table>
         </section>
-
     </main>
 
     <script>
         let cachedFiles = [];
         let sortAscending = true;
 
-        // Sayfa yüklendiğinde verileri çek
         document.addEventListener('DOMContentLoaded', () => {
             fetchFileList();
-            
-            // Sıralama tetikleyicisi
             document.getElementById('sort-file-name').addEventListener('click', toggleSort);
         });
 
-        // GitHub Actions tarafından üretilen json dosyasını oku
         async function fetchFileList() {
             try {
+                // Sitenin kendi oluşturduğu json'ı çekiyoruz
                 const response = await fetch('./dosyalar.json');
-                if (!response.ok) throw new Error('dosyalar.json bulunamadı.');
+                if (!response.ok) throw new Error();
                 
-                const files = await response.json();
-                
-                // index.html ve listenin kendisini filtrelenmiş listeden çıkar
-                cachedFiles = files.filter(f => f !== 'index.html' && f !== 'dosyalar.json');
-                
+                cachedFiles = await response.json();
                 renderTable();
             } catch (error) {
-                console.error(error);
                 document.getElementById('file-table-body').innerHTML = `
-                    <tr>
-                        <td colspan="5" style="text-align: center; color: #d32f2f; padding: 30px;">
-                            Dosya listesi yüklenemedi. Lütfen depoda 'dosyalar.json' dosyasının oluştuğundan emin olun.
-                        </td>
-                    </tr>
+                    <tr><td colspan="2" style="text-align: center; color: #888; padding: 20px;">Dosya listesi alınamadı veya henüz dosya yüklenmedi.</td></tr>
                 `;
             }
         }
 
-        // Tabloyu ekrana basan fonksiyon
         function renderTable() {
             const tbody = document.getElementById('file-table-body');
             const countSpan = document.getElementById('file-count');
             tbody.innerHTML = '';
             
             if (cachedFiles.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 20px;">Depoda dosya bulunamadı.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="2" style="text-align: center; padding: 20px;">Klasör boş.</td></tr>';
                 countSpan.innerText = '0 Dosya';
                 return;
             }
 
-            countSpan.innerText = `${cachedFiles.length} Dosya Listeleniyor`;
+            countSpan.innerText = `${cachedFiles.length} Dosya`;
 
             cachedFiles.forEach((filePath, index) => {
                 const fileName = filePath.split('/').pop();
                 const row = document.createElement('tr');
                 
-                // LocalStorage'dan bu dosyaya ait eski kayıtları kontrol et (Veri kaybını önlemek için)
-                const savedState = JSON.parse(localStorage.getItem(`file_state_${filePath}`)) || {
-                    muellif: false,
-                    denetim: false,
-                    aciklama: ''
-                };
-
                 row.innerHTML = `
                     <td>${index + 1}</td>
                     <td>
                         <a href="./${filePath}" target="_blank" class="file-link">${fileName}</a>
-                        ${filePath.includes('/') ? `<br><small style="color:#999; font-size:11px;">Klasör: ${filePath.substring(0, filePath.lastIndexOf('/'))}</small>` : ''}
-                    </td>
-                    <td style="text-align: center;">
-                        <input type="checkbox" data-path="${filePath}" data-field="muellif" ${savedState.muellif ? 'checked' : ''}>
-                    </td>
-                    <td style="text-align: center;">
-                        <input type="checkbox" data-path="${filePath}" data-field="denetim" ${savedState.denetim ? 'checked' : ''}>
-                    </td>
-                    <td>
-                        <input type="text" data-path="${filePath}" data-field="aciklama" value="${savedState.aciklama}" placeholder="Not ekleyin...">
+                        ${filePath.includes('/') ? `<br><small style="color:#999; font-size:11px;">Yol: ${filePath}</small>` : ''}
                     </td>
                 `;
-
                 tbody.appendChild(row);
             });
-
-            // Girdiler değiştiğinde LocalStorage'a kaydetme olaylarını bağla
-            attachInputListeners();
         }
 
-        // Alfabetik Sıralama Fonksiyonu
         function toggleSort() {
             sortAscending = !sortAscending;
-            const th = document.getElementById('sort-file-name');
-            
-            th.innerHTML = sortAscending ? 'Dosya Adı ▲' : 'Dosya Adı ▼';
+            document.getElementById('sort-icon').innerText = sortAscending ? '▲' : '▼';
             
             cachedFiles.sort((a, b) => {
                 const nameA = a.split('/').pop().toLowerCase();
                 const nameB = b.split('/').pop().toLowerCase();
-                if (nameA < nameB) return sortAscending ? -1 : 1;
-                if (nameA > nameB) return sortAscending ? 1 : -1;
-                return 0;
+                return sortAscending ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
             });
 
             renderTable();
-        }
-
-        // Değişiklikleri tarayıcı hafızasına eşleyen listener fonksiyonu
-        function attachInputListeners() {
-            const inputs = document.querySelectorAll('#file-table-body input');
-            
-            inputs.forEach(input => {
-                const eventType = input.type === 'checkbox' ? 'change' : 'input';
-                
-                input.addEventListener(eventType, (e) => {
-                    const path = e.target.getAttribute('data-path');
-                    const field = e.target.getAttribute('data-field');
-                    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-                    
-                    // Mevcut veriyi al veya yeni nesne oluştur
-                    let savedState = JSON.parse(localStorage.getItem(`file_state_${path}`)) || {
-                        muellif: false,
-                        denetim: false,
-                        aciklama: ''
-                    };
-                    
-                    // İlgili alanı güncelle
-                    savedState[field] = value;
-                    
-                    // Geri kaydet
-                    localStorage.setItem(`file_state_${path}`, JSON.stringify(savedState));
-                });
-            });
         }
     </script>
 </body>
