@@ -1,0 +1,3 @@
+[build]
+  command = "find . -type f ! -path '*/.*' ! -name 'index.html' | sed 's|^\./||' | jq -R . | jq -s . > dosyalar.json"
+  publish = "."
