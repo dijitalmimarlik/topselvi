@@ -1,0 +1,27 @@
+name: Dosya Listesini Guncelle
+
+on:
+  push:
+    branches:
+      - main # Eğer deponuzun ana dalı 'master' ise burayı master yapın
+  workflow_dispatch: # İsterseniz panelden manuel tetiklemek için
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Depoyu Klonla
+        uses: actions/checkout@v4
+
+      - name: Dosya Listesini JSON Olarak Hazırla
+        run: |
+          # index.html, gizli dosyalar (. ile başlayanlar) ve json'ın kendisi hariç her şeyi listele
+          find . -type f ! -path '*/.*' ! -name 'index.html' ! -name 'dosyalar.json' | sed 's|^\./||' | jq -R . | jq -s . > dosyalar.json
+
+      - name: Değişiklikleri Commit Et ve Yükle
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add dosyalar.json
+          # Eğer değişiklik yoksa hata vermemesi için kontrol ekledik
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Güncel dosya listesi otomatik oluşturuldu" && git push)
