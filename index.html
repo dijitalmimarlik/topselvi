@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Topselvi Konut Projesi | Dual Yapı</title>
+<meta name="description" content="Alkar & Alemdar Dual Yapı’nın Topselvi Konut Projesi: 2+1 daireler, kat planları ve 1.875.000 ₺’ye varan Yarısı Bizden desteği.">
+<meta property="og:title" content="Topselvi Konut Projesi | Dual Yapı">
+<meta property="og:description" content="2+1 daireler, kat planları ve Yarısı Bizden destek bilgileri.">
+<meta property="og:image" content="images/bina.jpg">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0d2238;--navy2:#16385a;--ink:#14202c;--mist:#eef0f2;--line:#d6dbe0;--glow:#f2b04e;--red:#a3191f;
+--head:"Bricolage Grotesque",system-ui,sans-serif;--body:"Figtree",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:76px}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{font:400 17px/1.6 var(--body);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--glow);outline-offset:3px}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--head);line-height:1.08;letter-spacing:-.02em}
+h2{font-size:clamp(30px,4.4vw,48px);max-width:20ch}
+section{padding:clamp(64px,9vw,110px) 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.8em 1.4em;border-radius:999px;font:600 1rem var(--body);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .2s}
+.glow{background:var(--glow);color:var(--navy)}.glow:hover{background:#ffc56e}
+.line{border-color:rgba(255,255,255,.4);color:#fff}.line:hover{background:rgba(255,255,255,.1)}
+.dark{background:var(--navy);color:#fff}.dark:hover{background:var(--navy2)}
+.outline{border-color:var(--navy);color:var(--navy)}.outline:hover{background:var(--mist)}
+
+header{position:fixed;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top,0px);transition:background .3s}
+header.on{background:rgba(13,34,56,.93);backdrop-filter:blur(10px)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font:800 18px var(--head)}
+.brand img{width:40px;height:40px;background:#fff;border-radius:10px;padding:3px}
+nav{display:flex;gap:26px}
+nav a{color:#dbe4ee;text-decoration:none;font-size:15px}nav a:hover{color:#fff}
+.bar .btn{padding:.55em 1.1em;font-size:15px}
+
+.hero{background:var(--navy);color:#fff;padding:0;overflow:hidden}
+.hero .wrap{min-height:100svh;display:grid;grid-template-columns:1fr 1.05fr;align-items:center;gap:clamp(28px,5vw,72px);padding:96px 0 48px}
+.pic{position:relative;height:min(80svh,780px);border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.pic img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.pic figcaption{position:absolute;left:16px;bottom:16px;padding:.35em .9em;border-radius:999px;background:rgba(13,34,56,.72);backdrop-filter:blur(6px);font-size:13px;font-weight:600}
+.hero .by{color:var(--glow);font-weight:600;margin-bottom:14px}
+.hero h1{font-size:clamp(44px,6.4vw,88px);font-weight:800;max-width:8ch}
+.lead{max-width:42ch;color:#cfdae6;font-size:1.15rem;margin:24px 0 32px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:flex;flex-wrap:wrap;gap:14px 36px;margin-top:48px;list-style:none;padding:0}
+.facts li{border-left:3px solid var(--glow);padding-left:14px}
+.facts b{display:block;font:700 21px var(--head)}
+.facts span{font-size:14px;color:#b9c8d8}
+@media(prefers-reduced-motion:no-preference){.pic{animation:rev 1.2s .1s both cubic-bezier(.2,.7,.2,1)}.txt{animation:rev .9s both}}
+@keyframes rev{from{opacity:0;transform:translateY(24px) scale(.985)}}
+
+.split{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,90px);align-items:start}
+.split p{margin-top:18px;color:#4a5866;max-width:38ch}
+.checks{list-style:none;padding:0}
+.checks li{font:600 clamp(20px,2.6vw,26px)/1.25 var(--head);padding:22px 0 22px 44px;border-bottom:1px solid var(--line);position:relative}
+.checks li:first-child{border-top:1px solid var(--line)}
+.checks li:before{content:"";position:absolute;left:4px;top:30px;width:14px;height:8px;border-left:3px solid var(--red);border-bottom:3px solid var(--red);transform:rotate(-45deg)}
+
+.plans{background:var(--mist)}
+.tabs{display:inline-flex;background:#fff;border-radius:999px;padding:5px;margin:28px 0 32px;border:1px solid var(--line)}
+.tabs button{font:600 15px var(--body);border:0;background:none;padding:.65em 1.4em;border-radius:999px;cursor:pointer;color:var(--ink)}
+.tabs button[aria-selected=true]{background:var(--navy);color:#fff}
+.planbox{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.planbox a{display:block;background:#fff;border-radius:18px;padding:14px;border:1px solid var(--line)}
+.planbox img{width:100%;border-radius:10px}
+dl{margin:0}
+dl>div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+dt{color:#4a5866}dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+.sum dt,.sum dd{color:var(--ink);font-weight:600}
+.big dd{font:800 28px var(--head);color:var(--red)}
+.planbox h3{font-size:28px;margin-bottom:10px}
+.note{font-size:14px;color:#5d6b79;margin-top:14px}
+
+.gal{display:grid;grid-template-columns:1.45fr 1fr;gap:16px;margin-top:40px}
+.gal figure{position:relative;border-radius:18px;overflow:hidden;min-height:340px}
+.gal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:48px 20px 16px;color:#fff;font-weight:600;background:linear-gradient(transparent,rgba(13,34,56,.8))}
+
+.fin{background:var(--navy);color:#fff}
+.fin h2{max-width:22ch}
+.sub{color:#b9c8d8;max-width:52ch;margin-top:16px}
+.stack{display:flex;height:22px;border-radius:999px;overflow:hidden;gap:3px;margin:48px 0 22px}
+.stack i{display:block}
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;list-style:none;padding:0}
+.legend b{display:block;font:800 clamp(26px,3.4vw,38px) var(--head)}
+.legend span{color:#b9c8d8;font-size:15px}
+.legend li{border-top:4px solid var(--c);padding-top:14px}
+.terms{list-style:none;padding:0;margin:56px 0 36px;max-width:640px}
+.terms li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+.terms span{color:#b9c8d8}.terms b{font-weight:600}
+.fine{font-size:14px;color:#9fb1c4;margin-top:20px;max-width:60ch}
+
+.people{margin-top:32px}
+.person{padding:20px 0;border-top:1px solid var(--line)}
+.person:last-child{border-bottom:1px solid var(--line)}
+.person h3{font-size:22px}
+.person p{margin:2px 0 14px;color:#4a5866}
+.person .cta{gap:10px}
+form{background:var(--mist);border-radius:20px;padding:clamp(22px,4vw,36px)}
+form h3{font-size:26px;margin-bottom:18px}
+label{display:block;font-weight:600;font-size:15px;margin-bottom:16px}
+input,select{display:block;width:100%;margin-top:6px;padding:.8em 1em;font:400 16px var(--body);border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+form .btn{width:100%;margin-top:6px}
+
+footer{background:#091a2b;color:#9fb1c4;font-size:14px;padding:36px 0 calc(36px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer a{color:#dbe4ee}
+.dock{display:none}
+
+@media(max-width:820px){
+nav{display:none}
+.hero .wrap{grid-template-columns:1fr;gap:28px;padding:68px 0 40px}
+.pic{order:-1;margin-inline:-20px;border-radius:0;height:min(60svh,560px)}
+.facts{margin-top:36px}
+.split,.planbox,.gal,.legend{grid-template-columns:1fr}
+.gal figure{min-height:260px}
+.dock{display:grid;grid-template-columns:1fr 1fr;position:fixed;inset:auto 0 0;z-index:20;background:var(--navy);padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));gap:10px}
+.dock .btn{padding:.7em}
+footer{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+}
+</style>
+</head>
+<body>
+
+<header id="top">
+<div class="wrap bar">
+<a class="brand" href="#"><img src="images/logo.png" alt="Dual Yapı logosu"><span>Dual Yapı</span></a>
+<nav aria-label="Ana menü">
+<a href="#proje">Proje</a><a href="#planlar">Kat planları</a><a href="#mekan">İç mekân</a><a href="#destek">Yarısı Bizden</a><a href="#iletisim">İletişim</a>
+</nav>
+<a class="btn glow" href="tel:+905337733877">Hemen ara</a>
+</div>
+</header>
+
+<main>
+<section class="hero">
+<div class="wrap">
+<figure class="pic"><img src="images/bina.jpg" alt="Topselvi Konut Projesi 3D bina görseli" fetchpriority="high"><figcaption>3D tasarım görseli</figcaption></figure>
+<div class="txt">
+<p class="by">Alkar &amp; Alemdar Dual Yapı</p>
+<h1>Topselvi Konut Projesi</h1>
+<p class="lead">Depreme dayanıklı, modern 2+1 daireler. Yarısı Bizden kapsamında 1.875.000 ₺’ye varan devlet desteğiyle.</p>
+<div class="cta"><a class="btn glow" href="#iletisim">Bilgi alın</a><a class="btn line" href="#planlar">Kat planlarını görün</a></div>
+<ul class="facts">
+<li><b>2+1</b><span>Daire tipi</span></li>
+<li><b>52,83 – 54,62 m²</b><span>Net alan</span></li>
+<li><b>67,75 – 70,60 m²</b><span>Brüt alan</span></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="proje">
+<div class="wrap split">
+<div>
+<h2>Sağlam yapı, sözleşmeye uygun teslim</h2>
+<p>Mimari proje, konsept tasarım ve uygulama Bozoğlu Architects imzasını taşır.</p>
+</div>
+<ul class="checks">
+<li>Depreme dayanıklı modern yapılar</li>
+<li>Yüksek mühendislik kalitesi</li>
+<li>A Plus güvenilir malzeme kullanımı</li>
+<li>Zamanında teslim, sözleşmeye uygun üretim</li>
+</ul>
+</div>
+</section>
+
+<section id="planlar" class="plans">
+<div class="wrap">
+<h2>Kat planları</h2>
+<div class="tabs" role="tablist" aria-label="Kat seçimi">
+<button role="tab" data-k="zemin" aria-selected="true">Zemin kat</button>
+<button role="tab" data-k="normal" aria-selected="false">Normal kat</button>
+</div>
+<div class="planbox">
+<a id="plink" href="#" target="_blank" rel="noopener" aria-label="Planı büyük aç"><img id="pimg" src="images/zemin-kat.jpg" alt="Zemin kat planı"></a>
+<div>
+<h3 id="ptitle">Zemin kat</h3>
+<dl id="prows"></dl>
+<p class="note">Planı büyütmek için görsele dokunun. Ölçüler yaklaşık değerlerdir.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="mekan">
+<div class="wrap">
+<h2>Yaşam alanları</h2>
+<div class="gal">
+<figure><img src="images/salon.jpg" alt="Salon ve mutfak" loading="lazy"><figcaption>Salon, mutfak ve oturma alanı</figcaption></figure>
+<figure><img src="images/yatak.jpg" alt="Yatak odası" loading="lazy"><figcaption>Yatak odası</figcaption></figure>
+</div>
+</div>
+</section>
+
+<section id="destek" class="fin">
+<div class="wrap">
+<h2>Yarısı Bizden ile 1.875.000 ₺’ye varan devlet desteği</h2>
+<p class="sub">T.C. Çevre, Şehircilik ve İklim Değişikliği Bakanlığı’nın Yarısı Bizden programı kapsamındaki destekler.</p>
+<div class="stack" role="img" aria-label="Destek dağılımı: 875.000 ₺ hibe, 875.000 ₺ kredi desteği, 125.000 ₺ taşınma desteği">
+<i style="flex:875;background:var(--glow)"></i><i style="flex:875;background:#fff"></i><i style="flex:125;background:var(--red)"></i>
+</div>
+<ul class="legend">
+<li style="--c:var(--glow)"><b>875.000 ₺</b><span>Hibe desteği, geri ödemesiz</span></li>
+<li style="--c:#fff"><b>875.000 ₺</b><span>Kredi desteği, uygun vadeli</span></li>
+<li style="--c:var(--red)"><b>125.000 ₺</b><span>Taşınma desteği</span></li>
+</ul>
+<ul class="terms">
+<li><span>Kredi desteği</span><b>3.000.000 ₺’ye kadar</b></li>
+<li><span>Faiz oranı</span><b>%0,69</b></li>
+<li><span>Vade</span><b>180 aya kadar</b></li>
+<li><span>Ödeme başlangıcı</span><b>İlk 12 ay ödeme yok</b></li>
+</ul>
+<a class="btn line" href="https://yarisibizden.csb.gov.tr" target="_blank" rel="noopener">Programın resmi sayfası</a>
+<p class="fine">Destek tutarları ve kredi koşulları program şartlarına ve başvuru sahibine göre değişebilir. Başvuru süreci için satış ekibimizle görüşebilirsiniz.</p>
+</div>
+</section>
+
+<section id="iletisim">
+<div class="wrap split">
+<div>
+<h2>Detaylı bilgi ve başvuru için bizi arayın</h2>
+<div class="people">
+<div class="person"><h3>Muhammed Alemdar</h3><p>0 (533) 773 38 77</p>
+<div class="cta"><a class="btn dark" href="tel:+905337733877">Ara</a><a class="btn outline" href="https://wa.me/905337733877" target="_blank" rel="noopener">WhatsApp</a></div></div>
+<div class="person"><h3>Hamza Albayrak</h3><p>0 (534) 679 65 96</p>
+<div class="cta"><a class="btn dark" href="tel:+905346796596">Ara</a><a class="btn outline" href="https://wa.me/905346796596" target="_blank" rel="noopener">WhatsApp</a></div></div>
+</div>
+</div>
+<form id="f">
+<h3>Sizi arayalım</h3>
+<label>Adınız soyadınız<input name="ad" required autocomplete="name"></label>
+<label>İlgilendiğiniz kat
+<select name="kat"><option>Zemin kat</option><option>Normal kat</option><option>Henüz karar vermedim</option></select></label>
+<label>Kiminle görüşmek istersiniz?
+<select name="kisi"><option value="905337733877">Muhammed Alemdar</option><option value="905346796596">Hamza Albayrak</option></select></label>
+<button class="btn dark" type="submit">WhatsApp’tan mesaj gönder</button>
+</form>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<span>© 2026 Alkar &amp; Alemdar Dual Yapı. Görseller tanıtım amaçlıdır.</span>
+<span>Mimari proje: <a href="https://www.bozogluarchitects.com" target="_blank" rel="noopener">Bozoğlu Architects</a></span>
+</div>
+</footer>
+
+<div class="dock"><a class="btn glow" href="tel:+905337733877">Hemen ara</a><a class="btn line" href="https://wa.me/905337733877" target="_blank" rel="noopener">WhatsApp</a></div>
+
+<script>
+const P={
+zemin:{t:'Zemin kat',img:'images/zemin-kat.jpg',r:[['Salon + mutfak','22,57'],['Çocuk odası','8,25'],['Yatak odası','11,85'],['Banyo + WC','5,00'],['Hol','5,16']],n:'52,83',b:'67,75'},
+normal:{t:'Normal kat',img:'images/normal-kat.jpg',r:[['Salon + mutfak','24,36'],['Çocuk odası','8,25'],['Yatak odası','11,85'],['Banyo + WC','5,00'],['Hol','5,16']],n:'54,62',b:'70,60'}
+};
+const $=s=>document.querySelector(s);
+function show(k){
+const p=P[k];
+$('#pimg').src=p.img;$('#pimg').alt=p.t+' planı';$('#plink').href=p.img;$('#ptitle').textContent=p.t;
+$('#prows').innerHTML=p.r.map(([a,b])=>`<div><dt>${a}</dt><dd>${b} m²</dd></div>`).join('')
++`<div class="sum"><dt>Net alan</dt><dd>${p.n} m²</dd></div><div class="sum big"><dt>Brüt alan</dt><dd>${p.b} m²</dd></div>`;
+document.querySelectorAll('[role=tab]').forEach(t=>t.setAttribute('aria-selected',t.dataset.k===k));
+}
+document.querySelectorAll('[role=tab]').forEach(t=>t.addEventListener('click',()=>show(t.dataset.k)));
+show('zemin');
+
+const h=$('header');
+const sc=()=>h.classList.toggle('on',scrollY>40);
+addEventListener('scroll',sc,{passive:true});sc();
+
+$('#f').addEventListener('submit',e=>{
+e.preventDefault();
+const f=e.target;
+const txt=`Merhaba, ben ${f.ad.value}. Topselvi Konut Projesi (${f.kat.value}) hakkında bilgi almak istiyorum.`;
+window.open('https://wa.me/'+f.kisi.value+'?text='+encodeURIComponent(txt),'_blank','noopener');
+});
+</script>
+</body>
+</html>
